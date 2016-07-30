@@ -2,7 +2,7 @@
 
 ## 静态文件发布到七牛云
 ## 清空七牛CDN
-## 全站页面由GBK、GB2312、UTF转UTF-8 with out BOM
+## 全站页面由GBK、GB2312、UTF-8转UTF-8 with out BOM
 
 ### vs2015 + .net framework4.0 + log4net + Newtonsoft.Json + HtmlAgilityPack
 
