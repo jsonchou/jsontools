@@ -1,7 +1,7 @@
 # jsontools 
 
 
-## winform tools for deploying to QiNIU Cloud & some other kits
+## Winform tools for deploying to QiNIU Cloud & some other kits
 
 - convert static files to QiNIU Cloud
 - fusion QiNIU CDN
@@ -10,13 +10,14 @@
 
 #### Tools & Packages
 
-vs2015 + .net framework4.0 + log4net + Newtonsoft.Json + HtmlAgilityPack
+- vs2015 + .net framework4.0 + log4net + Newtonsoft.Json + HtmlAgilityPack
 
 
-##### Output
-[output path](CSharpWinform/output)
+#### Output Dir
+
+- [install](CSharpWinform/output)
 
 
-##### Framework Enviroment
+#### Framework Enviroment
 - [.net framework 4.0 download](https://www.microsoft.com/zh-CN/download/details.aspx?id=17851)
 - Run with **administrator privileges**
