@@ -1,12 +1,12 @@
 # jsontools
 
-## ¾²Ì¬ÎÄ¼ş·¢²¼µ½ÆßÅ£ÔÆ
-## Çå¿ÕÆßÅ£CDN
-## ÎÄ¼şÓÉGBK¡¢GB2312¡¢UTF-8×ªUTF-8 without BOM
+## é™æ€æ–‡ä»¶å‘å¸ƒåˆ°ä¸ƒç‰›äº‘
+## æ¸…ç©ºä¸ƒç‰›CDN
+## æ–‡ä»¶ç”±GBKã€GB2312ã€UTF-8è½¬UTF-8 without BOM
 
 ### vs2015 + .net framework4.0 + log4net + Newtonsoft.Json + HtmlAgilityPack
 
-#### [Èí¼şexe°²×°°üÏÂÔØµØÖ·](CSharpWinform/output)
-#### [.net framework 4.0 ÏÂÔØµØÖ·](https://www.microsoft.com/zh-CN/download/details.aspx?id=17851)
+#### [è½¯ä»¶exeå®‰è£…åŒ…ä¸‹è½½åœ°å€](CSharpWinform/output)
+#### [.net framework 4.0 ä¸‹è½½åœ°å€](https://www.microsoft.com/zh-CN/download/details.aspx?id=17851)
 
-##### ¹ÜÀíÔ±È¨ÏŞÔËĞĞ
+##### ç®¡ç†å‘˜æƒé™è¿è¡Œ
