@@ -10,7 +10,7 @@
 
 ## Tools & Packages
 
-- vs2015 + .net framework4.0 + log4net + Newtonsoft.Json + HtmlAgilityPack
+- visual studio 2015 + .net framework4.0 + log4net + Newtonsoft.Json + HtmlAgilityPack
 
 
 ## Output Dir
