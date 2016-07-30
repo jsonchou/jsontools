@@ -1,7 +1,7 @@
 # jsontools 
 
 
-## Winform tools for deploying to QiNIU Cloud & some other kits
+Winform tools for deploying to QiNIU Cloud & some other kits
 
 - convert static files to QiNIU Cloud
 - fusion QiNIU CDN
@@ -18,6 +18,7 @@
 - [install](CSharpWinform/output)
 
 
-#### Framework Enviroment
-- [.net framework 4.0 download](https://www.microsoft.com/zh-CN/download/details.aspx?id=17851)
+#### Enviroment
+- [.net framework 4.0](https://www.microsoft.com/zh-CN/download/details.aspx?id=17851)
+
 - Run with **administrator privileges**
