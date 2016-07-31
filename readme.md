@@ -3,8 +3,8 @@
 
 ## Winform tools for deploying to QiNIU Cloud & some other kits
 
-- convert static files to QiNIU Cloud
-- fusion QiNIU CDN
+- push static files to QiNIU Cloud & fusion QINIU CDN
+- fusion QiNIU CDN by specific file path
 - convert GBK、GB2312、UTF-8 to UTF-8 without BOM
 
 
