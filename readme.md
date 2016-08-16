@@ -6,6 +6,7 @@
 - push static files to QiNIU Cloud & fusion QINIU CDN
 - fusion QiNIU CDN by specific file path
 - convert GBK、GB2312、UTF-8 to UTF-8 without BOM
+- convert to lower case file & folder
 
 
 ## Tools & Packages

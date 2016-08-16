@@ -104,6 +104,7 @@ namespace CSharpWinform
             var txtp = this.txtCDNPath.Text;
             if (string.IsNullOrEmpty(txtp))
             {
+                this.lblCDNStatus.Text = "...";
                 return;
             }
 
@@ -158,6 +159,7 @@ namespace CSharpWinform
             cfg.Https = bool.Parse(obj["Https"].ToString());
             cfg.Domains = (List<string>)obj["Domains"].ToObject(typeof(List<string>));
             cfg.Exts = (List<string>)obj["Exts"].ToObject(typeof(List<string>));
+            cfg.IgnoreFolder = (List<string>)obj["IgnoreFolder"].ToObject(typeof(List<string>));
 
             //填充表单
             this.txtLocalPath.Text = cfg.PATH;
@@ -181,6 +183,12 @@ namespace CSharpWinform
             }
             this.txtExts.Text = sbExts.ToString();
 
+            var sbIgfs = new StringBuilder();
+            foreach (var item in cfg.IgnoreFolder)
+            {
+                sbIgfs.Append(item + "|");
+            }
+            this.txtIgnoreFolder.Text = sbIgfs.ToString();
 
 
         }
@@ -203,6 +211,10 @@ namespace CSharpWinform
             var exs = this.txtExts.Text;
             var exslist = exs.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries).ToList<string>(); ;
             cfg.Exts = exslist;
+
+            var igf = this.txtIgnoreFolder.Text;
+            var igflist = igf.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries).ToList<string>(); ;
+            cfg.IgnoreFolder = igflist;
 
 
             //保存配置
@@ -236,7 +248,6 @@ namespace CSharpWinform
                     mylist.Add(item.ToLower().Replace("/_src/", "/"));
                 }
             }
-
 
             return mylist.Distinct().ToList();
         }
@@ -473,7 +484,7 @@ namespace CSharpWinform
         /// </summary>
         /// <param name="dir"></param>
         /// 
-        public void ListConvertFiles(string baseDir)
+        private void ListConvertFiles(string baseDir)
         {
 
             DirectoryInfo mydir = new DirectoryInfo(baseDir);
@@ -481,8 +492,7 @@ namespace CSharpWinform
             var txtFileTypes = this.txtCheckFiles.Text;
             var txtFileTypesList = txtFileTypes.Split('|').ToList();//文件类型列表
 
-            var txtFolderTypes = this.txtIgnoreFolder.Text;
-            var txtFolderTypesList = txtFolderTypes.Split('|').ToList();//忽视文件夹名称列表
+            var txtFolderTypesList = cfg.IgnoreFolder;//忽视文件夹名称列表
 
             //append root files
             var rootFiles = mydir.GetFiles();
@@ -516,6 +526,66 @@ namespace CSharpWinform
         }
 
         /// <summary>
+        /// 转换大写的目录及文件，变成小写
+        /// </summary>
+        /// <param name="baseDir"></param>
+        private void ListLowerCaseFiles(string baseDir) {
+
+            DirectoryInfo mydir = new DirectoryInfo(baseDir);
+
+            var txtFolderTypesList = cfg.IgnoreFolder;//忽视文件夹名称列表
+
+            //append root files
+            var rootFiles = mydir.GetFiles();
+
+            foreach (var item in rootFiles)
+            {
+                var fs = item;
+                var fns = fs.FullName;
+               
+                if (fns.ToLower() != fns)
+                {
+                    var fnsTemp = fs.FullName + "_temp";
+                    fs.MoveTo(fnsTemp);
+                    fs = new FileInfo(fnsTemp);
+                    fs.MoveTo(fns.ToLower());
+                    //删除_temp备份
+                    if (File.Exists(fnsTemp))
+                    {
+                        File.Delete(fnsTemp);
+                    }
+                }
+            }
+
+            DirectoryInfo[] dirtyArr = mydir.GetDirectories();
+
+            //子目录
+            foreach (var item in txtFolderTypesList)
+            {
+                dirtyArr = dirtyArr.Where(c => !c.FullName.Contains(item)).ToArray();
+            }
+
+            foreach (var item in dirtyArr)
+            {
+                var fs = item;
+                var fns = fs.FullName;
+                if (fns.ToLower() != fns) {
+                    var fnsTemp = item.FullName + "_temp";
+                    fs.MoveTo(fnsTemp);
+                    fs = new DirectoryInfo(fnsTemp);
+                    fs.MoveTo(fns.ToLower());
+                    //删除_temp备份
+                    if (Directory.Exists(fnsTemp))
+                    {
+                        Directory.Delete(fnsTemp, true);
+                    }
+                }
+                ListLowerCaseFiles(fns);
+            }
+
+        }
+
+        /// <summary>
         /// 保存到磁盘
         /// </summary>
         /// <param name="bytes">字节数组</param>
@@ -538,7 +608,29 @@ namespace CSharpWinform
             }
         }
 
+        /// <summary>
+        /// 文件文件夹转小写
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtConvertTolowerCase_Click(object sender, EventArgs e)
+        {
+            this.lblLowserStatus.Text = "执行中请稍等...";
+            lblLowserStatus.Refresh();
+            var txtp = this.txtUpperCasePath.Text;
+            if (string.IsNullOrEmpty(txtp))
+            {
+                this.lblLowserStatus.Text = "...";
+                return;
+            }
 
+            ListLowerCaseFiles(txtp);
+
+            lblLowserStatus.Text = "执行成功";
+
+        }
+
+        
     }
 
     public class Config
@@ -550,6 +642,7 @@ namespace CSharpWinform
         public string Uptoken_Url { get; set; }
         public bool Https { get; set; }
         public List<string> Exts { get; set; }
+        public List<string> IgnoreFolder { get; set; }
         public List<string> Domains { get; set; }
     }
 

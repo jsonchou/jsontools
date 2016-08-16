@@ -1,10 +1,1 @@
-{
-  "PATH": "C:\\Users\\json\\Desktop\\UzaiRealease\\love\\utf-8 bom",
-  "ACCESS_KEY": "ACCESS_KEY",
-  "SECRET_KEY": "G7KUlutJ-SECRET_KEY",
-  "Bucket_Name": "uzairesourcestatic",
-  "Uptoken_Url": "uptoken",
-  "Https": true,
-  "Exts": [ ".txt", ".jpg", ".jpeg", ".png", ".gif", ".json", ".xml", ".js", ".css", ".html" ],
-  "Domains": [ "http://r.uzaicdn.com", "http://r01.uzaicdn.com", "http://r02.uzaicdn.com", "http://r03.uzaicdn.com" ]
-}
+{"PATH":"D:\\前端事务\\发布","ACCESS_KEY":"ACCESS_KEY","SECRET_KEY":"G7KUlutJ-SECRET_KEY","Bucket_Name":"uzairesourcestatic","Uptoken_Url":"uptoken","Https":true,"Exts":[".txt",".jpg",".jpeg",".png",".gif",".json",".xml",".js",".css",".html"],"IgnoreFolder":[".idea",".svn",".git","node_modules","packages",".tmp","bin"],"Domains":["http://r.uzaicdn.com","http://r01.uzaicdn.com","http://r02.uzaicdn.com","http://r03.uzaicdn.com"]}

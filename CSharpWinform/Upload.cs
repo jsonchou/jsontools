@@ -49,6 +49,10 @@ namespace CSharpWinform
             //去重
             myfiles = myfiles.Distinct().ToList<string>();
 
+            //判断资源是否存在
+
+            myfiles = checkFileExtis(myfiles);
+
             foreach (var item in myfiles)
             {
 
@@ -131,5 +135,24 @@ namespace CSharpWinform
                 ListFiles(item);
             }
         }
+
+        /// <summary>
+        /// 返回存在的文件列表
+        /// </summary>
+        /// <param name="myfiles"></param>
+        /// <returns></returns>
+        private List<string> checkFileExtis(List<string> myfiles) {
+            var list = new List<string>();
+            foreach (var item in myfiles)
+            {
+                if (File.Exists(item))
+                {
+                    list.Add(item);
+                }
+            }
+            return list;
+        }
+
+
     }
 }
